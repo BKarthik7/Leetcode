@@ -1,28 +1,19 @@
-#include <vector>
-using namespace std;
-
 class ProductOfNumbers {
 public:
-    vector<int> v;
-    ProductOfNumbers() {
-        v.push_back(1);
-    }
-    
+    vector<int> v{1};
+    ProductOfNumbers() {}
+
     void add(int num) {
-        if (num == 0) {
+        if (num != 0) {
+            v.push_back(num * v.back());
+        } else {
             v.clear();
             v.push_back(1);
-        } else {
-            v.push_back(v.back() * num);
         }
     }
-    
+
     int getProduct(int k) {
-        int s = v.size();
-        if (k >= s) {
-            return 0;
-        }
-        return v[s - 1] / v[s - 1 - k];
+        return k < v.size() ? v.back() / v[v.size() - k - 1] : 0;
     }
 };
 
