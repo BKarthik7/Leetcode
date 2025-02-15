@@ -4,7 +4,6 @@ public:
         if (x==target) return 1;
         if (x==0) return target==0; 
         const int m0=min(x, 1000); 
-        [[unroll]] 
         for (int m=10; m<=m0; m*=10) {
             if (partition(x/m, target-x%m)) return 1;
         }
