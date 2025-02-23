@@ -13,14 +13,11 @@ private:
         if (size == 0) return nullptr;
 
         TreeNode* root = new TreeNode(preorder[preStart]);
-        if (size == 1) return root; // Leaf node
+        if (size == 1) return root;
 
-        // The next element in preorder is the left child
         int leftChild = preorder[preStart + 1];
-        // Find the index of the left child in postorder
         int leftSize = postIndex[leftChild] - postStart + 1;
 
-        // Recursively construct the left and right subtrees
         root->left = construct(preorder, postorder, preStart + 1, postStart, leftSize, postIndex);
         root->right = construct(preorder, postorder, preStart + 1 + leftSize, postStart + leftSize, size - 1 - leftSize, postIndex);
 
