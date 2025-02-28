@@ -1,7 +1,6 @@
 class Solution {
 public:
     string shortestCommonSupersequence(string str1, string str2) {
-        // Step 1: Find the longest common subsequence using dynamic programming
         int m = str1.length();
         int n = str2.length();
         vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
